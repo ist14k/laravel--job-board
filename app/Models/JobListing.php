@@ -9,4 +9,7 @@ class JobListing extends Model
 {
     /** @use HasFactory<\Database\Factories\JobListingFactory> */
     use HasFactory;
+
+    public static array $EXPERIENCE_LEVELS = ['entry', 'intermediate', 'senior'];
+    public static array $CATEGORIES = ['Engineering', 'Marketing', 'Design', 'Sales', 'Customer Support', 'Human Resources', 'Finance', 'Operations'];
 }

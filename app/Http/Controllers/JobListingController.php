@@ -12,7 +12,9 @@ class JobListingController extends Controller
      */
     public function index()
     {
-        //
+        return view('jobs.index', [
+            'jobs' => JobListing::all(),
+        ]);
     }
 
     /**
@@ -34,9 +36,12 @@ class JobListingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobListing $jobListing)
+    public function show(JobListing $job)
     {
-        //
+        // dd($jobListing->toArray());
+        return view('jobs.show', [
+            'job' => $job,
+        ]);
     }
 
     /**
