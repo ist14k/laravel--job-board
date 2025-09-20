@@ -10,10 +10,24 @@ class JobListingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $jobs = JobListing::query();
+
+        $jobs->when($request->input('search'), function ($query, $search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhere('location', 'like', "%{$search}%");
+            });
+        })->when($request->input('min_salary'), function ($query, $minSalary) {
+            $query->where('salary', '>=', $minSalary);
+        })->when($request->input('max_salary'), function ($query, $maxSalary) {
+            $query->where('salary', '<=', $maxSalary);
+        });
+
         return view('jobs.index', [
-            'jobs' => JobListing::all(),
+            'jobs' => $jobs->get(),
         ]);
     }
 
