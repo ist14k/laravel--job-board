@@ -6,9 +6,9 @@
     <p class="mb-4 text-slate-600">{{ Str::limit($job->description, 150) }}</p>
   </div>
   <div class="flex flex-wrap gap-4 text-sm text-slate-500">
-    <span>💼 {{ $job->category }}</span>
+    <span>💼 {{ \App\Enum\JobListingCategory::getLabel($job->category) }}</span>
     <span>📍 {{ $job->location }}</span>
     <span>💰 ${{ number_format($job->salary) }} / year</span>
-    <span>🛠️ {{ $job->experience }} level</span>
+    <span>🛠️ {{ \App\Enum\JobListingExperience::getLabel($job->experience) }} level</span>
   </div>
 </x-card>
