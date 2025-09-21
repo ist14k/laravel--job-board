@@ -2,11 +2,19 @@
 
 namespace App\Enum;
 
-enum JobListingExperience: string
+enum JobListingCategory: string
 {
-    case ENTRY = 'entry';
-    case INTERMEDIATE = 'intermediate';
-    case SENIOR = 'senior';
+    case ENGINEERING = 'engineering';
+    case DESIGN = 'design';
+    case MARKETING = 'marketing';
+    case SALES = 'sales';
+    case HR = 'hr';
+    case FINANCE = 'finance';
+    case CUSTOMER_SUPPORT = 'customer_support';
+    case IT = 'it';
+    case LEGAL = 'legal';
+    case OPERATIONS = 'operations';
+    case OTHER = 'other';
 
     public static function values(): array
     {
