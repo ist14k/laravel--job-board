@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\JobListingExperience;
 use App\Models\JobListing;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('salary');
             $table->string('location');
             $table->string('category');
-            $table->enum('experience', JobListing::$EXPERIENCE_LEVELS);
+            $table->enum('experience', JobListingExperience::values());
             $table->timestamps();
         });
     }

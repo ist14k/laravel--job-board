@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enum\JobListingCategory;
+use App\Enum\JobListingExperience;
 use App\Models\JobListing;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,8 +24,8 @@ class JobListingFactory extends Factory
             'description' => $this->faker->paragraphs(3, true),
             'salary' => $this->faker->numberBetween(5_000, 150_000),
             'location' => $this->faker->city(),
-            'category' => $this->faker->randomElement(JobListing::$CATEGORIES),
-            'experience' => $this->faker->randomElement(JobListing::$EXPERIENCE_LEVELS),
+            'category' => $this->faker->randomElement(JobListingCategory::values()),
+            'experience' => $this->faker->randomElement(JobListingExperience::values()),
         ];
     }
 }
